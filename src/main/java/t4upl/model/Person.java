@@ -4,11 +4,10 @@ import java.util.Objects;
 
 public class Person {
 
-  String name;
-  String countryName;
-  int age;
-  boolean isFemale;
-
+  private String name;
+  private String countryName;
+  private int age;
+  private boolean isFemale;
 
   public Person(String name, int age) {
     this.name = name;
@@ -19,6 +18,18 @@ public class Person {
     this.name = name;
     this.countryName = countryName;
     this.age = age;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getCountryName() {
+    return countryName;
+  }
+
+  public boolean isFemale() {
+    return isFemale;
   }
 
   public int getAge() {
