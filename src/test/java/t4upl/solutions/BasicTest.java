@@ -149,5 +149,78 @@ public class BasicTest {
   // --------------------------------------------
   // filter() SECTION
 
+  @Test
+  public void filter_findPeopleWithNameStartingWithH() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person carmen = new Person("Carmen", "Spain", 82);
+    Person henry = new Person("Henry", "England", 32);
+    List<Person> people = Arrays.asList(hans, ivan, carmen, henry);
+    List<Person> peopleWithNameStartingWithH = new ArrayList<>();
+
+    //when
+    peopleWithNameStartingWithH = people.stream() //
+      .filter(person -> person.getName().startsWith("H")) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertEquals(2, peopleWithNameStartingWithH.size());
+    Assertions.assertTrue(peopleWithNameStartingWithH.contains(hans));
+    Assertions.assertTrue(peopleWithNameStartingWithH.contains(henry));
+  }
+
+  @Test
+  public void filter_findPeopleWithAgeOverFifty() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person carmen = new Person("Carmen", "Spain", 82);
+    Person henry = new Person("Henry", "England", 32);
+    List<Person> people = Arrays.asList(hans, ivan, carmen, henry);
+    List<Person> peopleWithAgeOverFifty = new ArrayList<>();
+
+    //when
+    peopleWithAgeOverFifty = people.stream() //
+      .filter(person -> person.getAge() > 50) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertEquals(2, peopleWithAgeOverFifty.size());
+    Assertions.assertTrue(peopleWithAgeOverFifty.contains(ivan));
+    Assertions.assertTrue(peopleWithAgeOverFifty.contains(carmen));
+  }
+
+  @Test
+  public void filter_findEntriesWhereKeyIsEqualToPersonName() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person carmen = new Person("Carmen", "Spain", 82);
+    Person henry = new Person("Henry", "England", 32);
+    Map<String, Person> peopleMap = new HashMap<String, Person>() {{
+      put("Hans", hans);
+      put("FooBar", ivan);
+      put("Carmen", carmen);
+      put("Totally not Henry", henry);
+    }};
+    Map<String, Person> peopleMapWithNamesAsKeys = new HashMap<String, Person>();
+
+    //when
+    peopleMapWithNamesAsKeys = peopleMap.entrySet().stream() //
+      .filter(entry -> entry.getValue().getName().equals(entry.getKey())) //
+      .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
+
+    //then
+    Assertions.assertEquals(2, peopleMapWithNamesAsKeys.size());
+    Assertions.assertEquals(hans, peopleMapWithNamesAsKeys.get("Hans"));
+    Assertions.assertEquals(carmen, peopleMapWithNamesAsKeys.get("Carmen"));
+  }
+
+  // --------------------------------------------
+  // map() SECTION
+
+
+
 
 }
