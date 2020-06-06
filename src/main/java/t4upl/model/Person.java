@@ -7,7 +7,6 @@ public class Person {
   private String name;
   private String countryName;
   private int age;
-  private boolean isFemale;
 
   public Person(String name, int age) {
     this.name = name;
@@ -28,9 +27,6 @@ public class Person {
     return countryName;
   }
 
-  public boolean isFemale() {
-    return isFemale;
-  }
 
   public int getAge() {
     return age;
@@ -46,14 +42,23 @@ public class Person {
     }
     Person person = (Person) o;
     return age == person.age &&
-      isFemale == person.isFemale &&
       Objects.equals(name, person.name) &&
       Objects.equals(countryName, person.countryName);
   }
 
   @Override
   public int hashCode() {
-
-    return Objects.hash(name, countryName, age, isFemale);
+    return Objects.hash(name, countryName, age);
   }
+
+  @Override
+  public String toString() {
+    return "Person{" +
+      "name='" + name + '\'' +
+      ", countryName='" + countryName + '\'' +
+      ", age=" + age +
+      '}';
+  }
+
+
 }

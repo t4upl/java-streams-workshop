@@ -1,6 +1,5 @@
 package t4upl.pathtolambda;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
@@ -9,6 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import t4upl.model.Person;
 
+/**
+ * PRESENTATION ONLY
+ */
 public class PathToLambdaTest {
 
 
@@ -45,9 +47,7 @@ public class PathToLambdaTest {
   }
 
   @Test
-  void getOldPeopleUsingAnnonymousClass() {
-    //We define old people as somebody who is over 75
-
+  void getOldPeopleUsingAnonymousClass() {
     //given
     Person[] personArray = {
       new Person("Adam", 80),
@@ -77,8 +77,6 @@ public class PathToLambdaTest {
 
   @Test
   void getOldPeopleUsingLambdaExpression() {
-    //We define old people as somebody who is over 75
-
     //given
     Person[] personArray = {
       new Person("Adam", 80),
@@ -105,8 +103,6 @@ public class PathToLambdaTest {
 
   @Test
   void getOldPeopleUsingLambdaExpressionInLined() {
-    //We define old people as somebody who is over 75
-
     //given
     Person[] personArray = {
       new Person("Adam", 80),
@@ -118,8 +114,8 @@ public class PathToLambdaTest {
 
     //when
     List<Person> oldPeople = people.stream() //
-      .filter((Person person) -> {
-        return person.getAge() > 70;
+      .filter((Person person) -> { //
+        return person.getAge() > 70; //
       }) //
       .collect(Collectors.toList());
 
@@ -131,8 +127,6 @@ public class PathToLambdaTest {
 
   @Test
   void getOldPeopleUsingLambdaExpressionSimplified() {
-    //We define old people as somebody who is over 75
-
     //given
     Person[] personArray = {
       new Person("Adam", 80),
@@ -152,13 +146,5 @@ public class PathToLambdaTest {
     Assertions.assertEquals(oldPeople.get(0), new Person("Adam", 80));
     Assertions.assertEquals(oldPeople.get(1), new Person("Alice", 120));
   }
-
-  public void foo() {
-    List<Person> people = new ArrayList<>();
-    List<Integer> ages = people.stream()
-      .map(person -> person.getAge())
-      .collect(Collectors.toList());
-  }
-
 
 }
