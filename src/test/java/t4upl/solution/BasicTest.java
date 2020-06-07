@@ -1,4 +1,4 @@
-package t4upl.solutions;
+package t4upl.solution;
 
 import java.util.ArrayList;
 import java.util.Arrays;
