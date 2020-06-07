@@ -2,6 +2,7 @@ package t4upl.solutions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import t4upl.model.Continent;
+import t4upl.model.Nation;
 import t4upl.model.Person;
 
 public class BasicTest {
@@ -220,7 +223,120 @@ public class BasicTest {
   // --------------------------------------------
   // map() SECTION
 
+  @Test
+  public void map_getListOfNames() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    List<Person> people = Arrays.asList(hans, ivan);
+    List<String> names = new ArrayList<>();
+
+    //when
+    names = people.stream() //
+      .map(person -> person.getName()) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertTrue(names.contains("Hans"));
+    Assertions.assertTrue(names.contains("Ivan"));
+  }
+
+  @Test
+  public void map_mapPeopleToCsvRows() {
+    //Note: use toCsv(Person) function provided
+
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    List<Person> people = Arrays.asList(hans, ivan);
+    List<String> csvRows = new ArrayList<>();
+
+    //when
+    csvRows = people.stream() //
+      .map(person -> toCsv(person)) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertTrue(csvRows.contains("Hans, Germany, 28"));
+    Assertions.assertTrue(csvRows.contains("Ivan, Russia, 65"));
+  }
+
+  private String toCsv(Person person) {
+    return person.getName() + "," + person.getCountryName() + "," + person.getAge();
+  }
+
+  // --------------------------------------------
+  // flatMap() SECTION
+
+  @Test
+  public void flatMap_getAllPeopleInNations() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person("Heinrich", "Germany", 43);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person vladimir = new Person("Vladimir", "Russia", 27);
+
+    Nation germans = new Nation(Arrays.asList(hans, heinrich));
+    Nation russians = new Nation(Arrays.asList(ivan, vladimir));
+    List<Nation> nations = Arrays.asList(germans, russians);
+
+    List<Person> people = new ArrayList<>();
+
+    //when
+    people = nations.stream() //
+      .flatMap(nation -> nation.getPeople().stream()) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertEquals(4, people.size());
+    Assertions.assertTrue(people.contains(hans));
+    Assertions.assertTrue(people.contains(heinrich));
+    Assertions.assertTrue(people.contains(ivan));
+    Assertions.assertTrue(people.contains(vladimir));
+  }
+
+  @Test
+  public void flatMap_getAllPeopleInContinents() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person("Heinrich", "Germany", 43);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person vladimir = new Person("Vladimir", "Russia", 27);
+
+    Person hayato = new Person("Hayao", "Japan", 35);
+    Person akira = new Person("Akira", "Russia", 78);
+
+    Nation germans = new Nation(Arrays.asList(hans, heinrich));
+    Nation russians = new Nation(Arrays.asList(ivan, vladimir));
+    Nation japanese = new Nation(Arrays.asList(hayato, akira));
+
+    Continent europe = new Continent(Arrays.asList(germans, russians));
+    Continent asia = new Continent(Collections.singletonList(japanese));
+
+    List<Continent> continents = Arrays.asList(europe, asia);
+    List<Person> people = new ArrayList<>();
+
+    //when
+    people = continents.stream() //
+      .flatMap(continent -> continent.getNations().stream()) //
+      .flatMap(nation -> nation.getPeople().stream()) //
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertEquals(6, people.size());
+    Assertions.assertTrue(people.contains(hans));
+    Assertions.assertTrue(people.contains(heinrich));
+    Assertions.assertTrue(people.contains(ivan));
+    Assertions.assertTrue(people.contains(vladimir));
+    Assertions.assertTrue(people.contains(hayato));
+    Assertions.assertTrue(people.contains(akira));
+  }
+
+
+
+
 
 
 
 }
+

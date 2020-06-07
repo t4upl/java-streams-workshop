@@ -27,7 +27,6 @@ public class Person {
     return countryName;
   }
 
-
   public int getAge() {
     return age;
   }
