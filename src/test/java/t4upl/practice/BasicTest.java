@@ -1,4 +1,4 @@
-package t4upl.solution;
+package t4upl.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
@@ -30,12 +29,10 @@ public class BasicTest {
     List<Person> people = Arrays.asList(hans, ivan);
 
     //when
-    people.stream() //
-      .forEach(person -> System.out.println(person));
 
     //then
     //change to true if you see in console pritned people
-    Assertions.assertTrue(true);
+    Assertions.assertTrue(false);
   }
 
   @Test
@@ -50,8 +47,6 @@ public class BasicTest {
     Set<Person> personSet = new HashSet<>();
 
     //when
-    people.stream() //
-      .forEach(person -> personSet.add(person));
 
     //then
     Assertions.assertEquals(2, personSet.size());
@@ -70,8 +65,6 @@ public class BasicTest {
     PeopleRepositoryMock peopleRepositoryMock = new PeopleRepositoryMock();
 
     //when
-    people.stream() //
-      .forEach(person -> peopleRepositoryMock.save(person));
 
     //then
     List<Person> peopleInDatabase = peopleRepositoryMock.findAll();
@@ -104,8 +97,6 @@ public class BasicTest {
     Set<Person> personSet = new HashSet<>();
 
     //when
-    personSet = people.stream() //
-      .collect(Collectors.toSet());
 
     //then
     Assertions.assertTrue(personSet.contains(hans));
@@ -121,8 +112,6 @@ public class BasicTest {
     Map<String, Person> peopleMap = new HashMap<>();
 
     //when
-    peopleMap = people.stream() //
-      .collect(Collectors.toMap(person -> person.getName(), person -> person));
 
     //then
     Assertions.assertEquals(2, peopleMap.size());
@@ -142,8 +131,6 @@ public class BasicTest {
     }};
 
     //when
-    people = peopleMap.values().stream() //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(2, people.size());
@@ -165,9 +152,6 @@ public class BasicTest {
     List<Person> peopleWithNameStartingWithH = new ArrayList<>();
 
     //when
-    peopleWithNameStartingWithH = people.stream() //
-      .filter(person -> person.getName().startsWith("H")) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(2, peopleWithNameStartingWithH.size());
@@ -186,9 +170,6 @@ public class BasicTest {
     List<Person> peopleWithAgeOverFifty = new ArrayList<>();
 
     //when
-    peopleWithAgeOverFifty = people.stream() //
-      .filter(person -> person.getAge() > 50) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(2, peopleWithAgeOverFifty.size());
@@ -212,9 +193,6 @@ public class BasicTest {
     Map<String, Person> peopleMapWithNamesAsKeys = new HashMap<String, Person>();
 
     //when
-    peopleMapWithNamesAsKeys = peopleMap.entrySet().stream() //
-      .filter(entry -> entry.getValue().getName().equals(entry.getKey())) //
-      .collect(Collectors.toMap(entry -> entry.getKey(), entry -> entry.getValue()));
 
     //then
     Assertions.assertEquals(2, peopleMapWithNamesAsKeys.size());
@@ -234,9 +212,6 @@ public class BasicTest {
     List<String> names = new ArrayList<>();
 
     //when
-    names = people.stream() //
-      .map(person -> person.getName()) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertTrue(names.contains("Hans"));
@@ -254,9 +229,6 @@ public class BasicTest {
     List<String> csvRows = new ArrayList<>();
 
     //when
-    csvRows = people.stream() //
-      .map(person -> toCsv(person)) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertTrue(csvRows.contains("Hans,Germany,28"));
@@ -285,9 +257,6 @@ public class BasicTest {
     List<Person> people = new ArrayList<>();
 
     //when
-    people = nations.stream() //
-      .flatMap(nation -> nation.getPeople().stream()) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(4, people.size());
@@ -319,10 +288,6 @@ public class BasicTest {
     List<Person> people = new ArrayList<>();
 
     //when
-    people = continents.stream() //
-      .flatMap(continent -> continent.getNations().stream()) //
-      .flatMap(nation -> nation.getPeople().stream()) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(6, people.size());
@@ -349,7 +314,7 @@ public class BasicTest {
     Person akira = new Person("Akira", "Japan", 78);
 
     List<Person> people = Arrays.asList(hans, heinrich, ivan, vladimir, hayato, akira);
-    Person personCausingNpe = hayato;
+    Person personCausingNpe = null;
 
     //when
     people.stream() //
@@ -388,7 +353,7 @@ public class BasicTest {
 
     //then
     //set to true when you read note
-    Assertions.assertTrue(true);
+    Assertions.assertTrue(false);
   }
 
   @Test
@@ -418,7 +383,7 @@ public class BasicTest {
 
     //then
     //set to true when you read note
-    Assertions.assertTrue(true);
+    Assertions.assertTrue(false);
   }
 
   @Test
@@ -448,7 +413,7 @@ public class BasicTest {
 
     //then
     //set to true when you read note
-    Assertions.assertTrue(true);
+    Assertions.assertTrue(false);
   }
 
   @Test
@@ -465,13 +430,13 @@ public class BasicTest {
 
     List<Person> germans = new ArrayList<>();
     List<Person> germansOverForty = new ArrayList<>();
-    Supplier<Stream<Person>> germanStreamSupplier = () -> people.stream() //
-      .filter(person -> person.getCountryName().equals("Germany"));
+    Stream<Person> germansStream = people.stream() //
+      .filter(person -> person.getCountryName().equals("Germany")); //
 
     //when
-    germans = germanStreamSupplier.get() //
+    germans = germansStream //
       .collect(Collectors.toList());
-    germansOverForty = germanStreamSupplier.get() //
+    germansOverForty = germansStream //
       .filter(german -> german.getAge() > 40) //
       .collect(Collectors.toList());
 

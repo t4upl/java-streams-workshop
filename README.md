@@ -13,6 +13,19 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 
 ## Contents
 
+BasicTest:
+* forEach()
+* collectors(toList(), toSet(), toMap())
+* streams on map data structure
+* filter()
+* map()
+* flatMap()
+* debug & code style
+* vertical processing
+* lazy
+* operation on closed streams
+
+
 TODO
 
 ## Repository structure
@@ -28,13 +41,13 @@ You may:
 You may not:
 - Put this repository to any company or closed repository
 - Modify any part of this repository
-- Present content of this repository as your own work
+- Present content of this repository as your own work or work of your organization
 - Use this repository to organize paid workshops
 
 You must:
 - Include link and information about author of this repository whenever you are using or building on contents of this repository
 
-In case of questions about the licence feel free to contact me:
+In case of questions feel free to contact me:
 https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/
 
 I retain right to change licence of this repository at any time in any way.
