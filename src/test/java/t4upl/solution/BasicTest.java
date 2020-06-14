@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import t4upl.model.Continent;
@@ -304,7 +305,7 @@ public class BasicTest {
     Person vladimir = new Person("Vladimir", "Russia", 27);
 
     Person hayato = new Person("Hayao", "Japan", 35);
-    Person akira = new Person("Akira", "Russia", 78);
+    Person akira = new Person("Akira", "Japan", 78);
 
     Nation germans = new Nation(Arrays.asList(hans, heinrich));
     Nation russians = new Nation(Arrays.asList(ivan, vladimir));
@@ -332,10 +333,153 @@ public class BasicTest {
     Assertions.assertTrue(people.contains(akira));
   }
 
+  @Test
+  public void debug_findPersonThatCausesNullPointerExceptionAndReasonWhy() {
+    //Note: Debugging in streams can be achieved using:
+    //  1. peek() - non-terminal forEach()
+    //  2. debugger - you need to move body of lambda to new line to put breakpoint (Idea)
 
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person(null, "Germany", 43);
+    Person ivan = new Person("Ivan", null, null);
+    Person vladimir = new Person(null, null, 27);
+    Person hayato = new Person("Hayao", "Japan", null);
+    Person akira = new Person("Akira", "Japan", 78);
 
+    List<Person> people = Arrays.asList(hans, heinrich, ivan, vladimir, hayato, akira);
+    Person personCausingNpe = hayato;
 
+    //when
+    people.stream()
+      .filter(person -> person != personCausingNpe)
+      .filter(person -> person.getName() != null)
+      .map(person ->
+        new Person(person.getName(), person.getCountryName(), person.getAge()))
+      .filter(person -> person.getCountryName() != null)
+      .map(person -> person.getAge() + 100)
+      .forEach(age -> System.out.println(age));
 
+    //then
+    //intentionally left empty
+  }
+
+  @Test
+  public void codeStyle() {
+    //Note: General rules for code style formatting when dealing with stream api
+    //  1. one line per instruction
+    //  2. Add // at the end of line to prevent auto formatting
+    //  3. Try to use full names for arguments in lambdas e.g. 'person' and not 'prsn'
+    //  4. Line break after  '->'  {@link https://google.github.io/styleguide/javaguide.html#s4.5.1-line-wrapping-where-to-break}
+
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person(null, "Germany", 43);
+
+    List<Person> people = Arrays.asList(hans, heinrich);
+
+    //when
+    people.stream() //
+      .map(person -> person.getAge()) //
+      .filter(age -> age < 18)  //
+      .map(age -> age > 70) //
+      .forEach(age -> System.out.println(age));
+
+    //then
+    //set to true when you read note
+    Assertions.assertTrue(true);
+  }
+
+  @Test
+  public void verticalProcessing_explainOrderOfStatementsPrintedToConsole() {
+    //Note: Streams process element vertically i.e. first elements goes through all operations of stream,
+    // then second element goes through all operations and so on until all elements are processed
+
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person("Heinrich", "Germany", 43);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person vladimir = new Person("Vladimir", "Russia", 27);
+
+    List<Person> people = Arrays.asList(hans, heinrich, ivan, vladimir);
+
+    //when
+    people.stream()
+      .peek(person -> System.out.println("-----------------"))
+      .peek(person -> System.out.println(person))
+      .map(person ->
+        new Person(person.getName().toUpperCase(), person.getCountryName().toUpperCase(),
+          person.getAge()))
+      .peek(person -> System.out.println((person.getName() + " from " + person.getCountryName())))
+      .map(person -> person.getAge())
+      .forEach(age -> System.out.println(age));
+
+    //then
+    //set to true when you read note
+    Assertions.assertTrue(true);
+  }
+
+  @Test
+  public void lazy_explainOrderOfStatementsPrintedToConsole() {
+    //Note: Streams are lazy i.e. they don't execute until they see terminal operation
+
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    List<Person> people = Collections.singletonList(hans);
+
+    //when
+    Stream<Person> peopleStream = people.stream()
+      .peek(person -> System.out.println("1"));
+
+    System.out.println("2");
+
+    peopleStream = peopleStream.map(person ->
+      new Person(person.getName().toUpperCase(), person.getCountryName().toUpperCase(),
+        person.getAge()))
+      .peek(person -> System.out.println("3"));
+
+    System.out.println("4");
+
+    peopleStream
+      .map(person -> person.getAge())
+      .forEach(age -> System.out.println("5"));
+
+    //then
+    //set to true when you read note
+    Assertions.assertTrue(true);
+  }
+
+  @Test
+  public void streamsCloseAfterTerminalOperation() {
+    //Note: Streams close after terminal operations and are unusable. Calling operation on closed stream causes exception.
+
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person("Heinrich", "Germany", 43);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    Person vladimir = new Person("Vladimir", "Russia", 27);
+
+    List<Person> people = Arrays.asList(hans, heinrich, ivan, vladimir);
+
+    List<Person> germans = new ArrayList<>();
+    List<Person> germansOverForty = new ArrayList<>();
+    Stream<Person> germansStream = people.stream()
+      .filter(person -> person.getCountryName().equals("Germany"));
+
+    //when
+    germans = germansStream.collect(Collectors.toList());
+    germansOverForty = germansStream
+      .filter(german -> german.getAge() > 40)
+      .collect(Collectors.toList());
+
+    //then
+    Assertions.assertEquals(2, germans.size());
+    Assertions.assertEquals(1, germansOverForty.size());
+
+    Assertions.assertTrue(germans.contains(heinrich));
+    Assertions.assertTrue(germans.contains(hans));
+    Assertions.assertTrue(germansOverForty.contains(heinrich));
+  }
 
 
 }

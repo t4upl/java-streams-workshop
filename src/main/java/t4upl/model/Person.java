@@ -6,14 +6,14 @@ public class Person {
 
   private String name;
   private String countryName;
-  private int age;
+  private Integer age;
 
   public Person(String name, int age) {
     this.name = name;
     this.age = age;
   }
 
-  public Person(String name, String countryName, int age) {
+  public Person(String name, String countryName, Integer age) {
     this.name = name;
     this.countryName = countryName;
     this.age = age;
@@ -27,7 +27,7 @@ public class Person {
     return countryName;
   }
 
-  public int getAge() {
+  public Integer getAge() {
     return age;
   }
 
