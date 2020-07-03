@@ -3,13 +3,13 @@ Materials for Java 8 streams API workshop
 
 ## Introduction
 
-This repository contains materials for Java Streams API workshops. This repository can be use either as private study or to organize workshop. In case you decide to use content of this repository to organize the workshops the following information are true. The aim of the workshop is to introduce Java developers to Java Streams API from Java 8. Materials contain:
- - Powerpoint presentation with theoretical introduction
+This repository contains materials for Java Streams API workshops. This repository can be used either as private study or to organize workshops. In case you decide to use content of this repository to organize the workshops the following information are true. The aim of the workshop is to introduce Java developers to Java Streams API from Java 8. Materials contain:
+ - Presentation with theoretical introduction
  - Cheat sheet
- - Pamphlet with model of objects use in exercises
- - Programming exercises(katas) to be solved during workshops.
+ - Pamphlet with model of objects used in exercises
+ - Programming exercises (katas) to be solved during workshops.
  
-Workshops can be organized either with normal or extended scope. Normal scope involves presentation + solving BasicTest class and would take about 4h. Extended scope involves presentation + solving BasicTest, AdvancedOneTest, AdvancedTwoTest classes and can take up to 7h. Normal scope should be enough for newcomers to Java Streams to tackle day-to-day problems. Extended scope involves topics on how to make using streams clearer. It is a bunch of nice-to-knows. While not critical for delivery using features from extended scope can improve code quality.
+Workshops can be organized either with normal or extended scope. Normal scope involves presentation + solving BasicTest class and would take about 4h. Extended scope involves presentation + solving BasicTest, AdvancedOneTest, AdvancedTwoTest classes and can take up to 7h. Normal scope should be enough for newcomers to Java Streams to tackle day-to-day problems. Extended scope involves topics on how to make using streams clearer. It is a bunch of nice-to-knows. While not critical for delivery using features from extended scope can improve code quality. Workshops should be limited to 8 people, excluding speaker.
 
 ## Contents
 
@@ -53,3 +53,5 @@ https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/
 I retain right to change licence of this repository at any time in any way.
 
 ## Work in progress... ##
+
+Expected to be finished by 01.08.2020
