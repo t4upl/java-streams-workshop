@@ -1,14 +1,12 @@
-package t4upl.solution;
+package t4upl.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import t4upl.model.Person;
@@ -27,8 +25,6 @@ public class AdvancedOneTest {
     List<Person> people = new ArrayList<>();
 
     //when
-    people = Arrays.stream(peopleArray) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(2, people.size());
@@ -46,8 +42,6 @@ public class AdvancedOneTest {
     Person[] peopleArray = new Person[0];
 
     //when
-    peopleArray = people.stream() //
-      .toArray(Person[]::new);
 
     //then
     Assertions.assertEquals(2, peopleArray.length);
@@ -68,9 +62,6 @@ public class AdvancedOneTest {
     String commaSeparatedNames = "";
 
     //when
-    commaSeparatedNames = people.stream() //
-      .map(person -> person.getName())
-      .collect(Collectors.joining(","));
 
     //then
     Assertions.assertEquals("Hans,Ivan", commaSeparatedNames);
@@ -87,8 +78,6 @@ public class AdvancedOneTest {
     Map<String, List<Person>> countryToPeople = new HashMap<>();
 
     //when
-    countryToPeople = people.stream() //
-      .collect(Collectors.groupingBy(person -> person.getCountry()));
 
     //then
     Assertions.assertEquals(2, countryToPeople.size());
@@ -108,8 +97,6 @@ public class AdvancedOneTest {
     Map<Character, List<Person>> firstLetterOfNameToPeople = new HashMap<>();
 
     //when
-    firstLetterOfNameToPeople = people.stream() //
-      .collect(Collectors.groupingBy(person -> person.getName().charAt(0)));
 
     //then
     Assertions.assertEquals(3, firstLetterOfNameToPeople.size());
@@ -131,8 +118,6 @@ public class AdvancedOneTest {
     Map<Boolean, List<Person>> isGermanToPeople = new HashMap<>();
 
     //when
-    isGermanToPeople = people.stream() //
-      .collect(Collectors.partitioningBy(person -> person.getCountry().equals("Germany")));
 
     //then
     Assertions.assertEquals(2, isGermanToPeople.size());
@@ -157,9 +142,6 @@ public class AdvancedOneTest {
     List<String> csvRowsWithoutHeader = new ArrayList<>();
 
     //when
-    csvRowsWithoutHeader = csvRows.stream() //
-      .skip(1) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(hans, heinrich, ivan, vladimir), csvRowsWithoutHeader);
@@ -176,9 +158,6 @@ public class AdvancedOneTest {
     List<Person> firstThreePeople = new ArrayList<>();
 
     //when
-    firstThreePeople = people.stream() //
-      .limit(3) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(hans, heinrich, ivan), firstThreePeople);
@@ -198,9 +177,6 @@ public class AdvancedOneTest {
     List<Person> distinctPeople = new ArrayList<>();
 
     //when
-    distinctPeople = people.stream() //
-      .distinct() //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(hans, heinrich, ivan, vladimir), distinctPeople);
@@ -220,8 +196,6 @@ public class AdvancedOneTest {
     boolean areAllPeopleGerman = false;
 
     //when
-    areAllPeopleGerman = people.stream() //
-      .allMatch(person -> person.getCountry().equals("Germany"));
 
     //then
     Assertions.assertTrue(areAllPeopleGerman);
@@ -236,8 +210,6 @@ public class AdvancedOneTest {
     boolean isNobodyRussian = false;
 
     //when
-    isNobodyRussian = people.stream() //
-      .noneMatch(person -> person.getCountry().equals("Russia"));
 
     //then
     Assertions.assertTrue(isNobodyRussian);
@@ -253,8 +225,6 @@ public class AdvancedOneTest {
     boolean isSomebodyRussian = false;
 
     //when
-    isSomebodyRussian = people.stream() //
-      .anyMatch(person -> person.getCountry().equals("Russia"));
 
     //then
     Assertions.assertTrue(isSomebodyRussian);
@@ -271,9 +241,6 @@ public class AdvancedOneTest {
     Optional<Person> firstRussian = Optional.empty();
 
     //when
-    firstRussian = people.stream() //
-      .filter(person -> person.getCountry().equals("Russia"))
-      .findFirst();
 
     //then
     Assertions.assertEquals(Optional.of(ivan), firstRussian);
@@ -295,9 +262,6 @@ public class AdvancedOneTest {
     List<Person> peopleSortedByName = new ArrayList<>();
 
     //when
-    peopleSortedByName = unsortedPeople.stream() //
-      .sorted(Comparator.comparing(person -> person.getName()))
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(hans, heinrich, ivan, vladimir), peopleSortedByName);
@@ -315,10 +279,6 @@ public class AdvancedOneTest {
     List<Person> peopleSortedByName = new ArrayList<>();
 
     //when
-    peopleSortedByName = unsortedPeople.stream() //
-      .sorted(Comparator.comparing(person -> person.getName(), //
-        Comparator.nullsFirst(Comparator.naturalOrder()))) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(nullNamedPerson, hans, heinrich, ivan, vladimir),

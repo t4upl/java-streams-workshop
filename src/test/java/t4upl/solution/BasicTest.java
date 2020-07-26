@@ -20,7 +20,7 @@ import t4upl.model.Person;
 public class BasicTest {
 
   // --------------------------------------------
-  // forEach() SECTION
+  //region FOR_EACH
 
   @Test
   public void forEach_printAllPeople() {
@@ -34,7 +34,7 @@ public class BasicTest {
       .forEach(person -> System.out.println(person));
 
     //then
-    //change to true if you see in console pritned people
+    //change to true if you see in console printed people
     Assertions.assertTrue(true);
   }
 
@@ -93,8 +93,10 @@ public class BasicTest {
     }
   }
 
+  //endregion
+
   // --------------------------------------------
-  // collectors() SECTION
+  // region COLLECTORS
   @Test
   public void collect_convertPeopleListToSet() {
     //given
@@ -151,8 +153,10 @@ public class BasicTest {
     Assertions.assertTrue(people.contains(ivan));
   }
 
+  //endregion
+
   // --------------------------------------------
-  // filter() SECTION
+  // region FILTERS
 
   @Test
   public void filter_findPeopleWithNameStartingWithH() {
@@ -222,8 +226,10 @@ public class BasicTest {
     Assertions.assertEquals(carmen, peopleMapWithNamesAsKeys.get("Carmen"));
   }
 
+  //endregion
+
   // --------------------------------------------
-  // map() SECTION
+  // region MAP
 
   @Test
   public void map_getListOfNames() {
@@ -267,8 +273,10 @@ public class BasicTest {
     return person.getName() + "," + person.getCountry() + "," + person.getAge();
   }
 
+  //endregion
+
   // --------------------------------------------
-  // flatMap() SECTION
+  // region FLATMAP
 
   @Test
   public void flatMap_getAllPeopleInNations() {
@@ -334,6 +342,11 @@ public class BasicTest {
     Assertions.assertTrue(people.contains(akira));
   }
 
+  //endregion
+
+  // --------------------------------------------
+  // region DEBUG AND CODESTYLE
+
   @Test
   public void debug_findPersonThatCausesNullPointerExceptionAndReasonWhy() {
     //Note: Debugging in streams can be achieved using:
@@ -391,6 +404,11 @@ public class BasicTest {
     Assertions.assertTrue(true);
   }
 
+  //endregion
+
+  // --------------------------------------------
+  //region VERTICAL_PROCESSING
+
   @Test
   public void verticalProcessing_explainOrderOfStatementsPrintedToConsole() {
     //Note: Streams process element vertically i.e. first elements goes through all operations of stream,
@@ -421,6 +439,11 @@ public class BasicTest {
     Assertions.assertTrue(true);
   }
 
+  //endregion
+
+  // --------------------------------------------
+  //region LAZY
+
   @Test
   public void lazy_explainOrderOfStatementsPrintedToConsole() {
     //Note: Streams are lazy i.e. they don't execute until they see terminal operation
@@ -450,6 +473,11 @@ public class BasicTest {
     //set to true when you read note
     Assertions.assertTrue(true);
   }
+
+  //endregion
+
+  // --------------------------------------------
+  //region OPERATION ON CLOSED STREAMS
 
   @Test
   public void streamsCloseAfterTerminalOperation() {
@@ -483,6 +511,8 @@ public class BasicTest {
     Assertions.assertTrue(germans.contains(hans));
     Assertions.assertTrue(germansOverForty.contains(heinrich));
   }
+
+  //endregion
 
 
 }
