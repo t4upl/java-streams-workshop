@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Person {
 
   private String name;
-  private String countryName;
+  private String country;
   private Integer age;
 
   public Person(String name, int age) {
@@ -13,9 +13,9 @@ public class Person {
     this.age = age;
   }
 
-  public Person(String name, String countryName, Integer age) {
+  public Person(String name, String country, Integer age) {
     this.name = name;
-    this.countryName = countryName;
+    this.country = country;
     this.age = age;
   }
 
@@ -23,8 +23,8 @@ public class Person {
     return name;
   }
 
-  public String getCountryName() {
-    return countryName;
+  public String getCountry() {
+    return country;
   }
 
   public Integer getAge() {
@@ -42,19 +42,19 @@ public class Person {
     Person person = (Person) o;
     return age == person.age &&
       Objects.equals(name, person.name) &&
-      Objects.equals(countryName, person.countryName);
+      Objects.equals(country, person.country);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, countryName, age);
+    return Objects.hash(name, country, age);
   }
 
   @Override
   public String toString() {
     return "Person{" +
       "name='" + name + '\'' +
-      ", countryName='" + countryName + '\'' +
+      ", country='" + country + '\'' +
       ", age=" + age +
       '}';
   }

@@ -236,7 +236,7 @@ public class BasicTest {
   }
 
   private String toCsv(Person person) {
-    return person.getName() + "," + person.getCountryName() + "," + person.getAge();
+    return person.getName() + "," + person.getCountry() + "," + person.getAge();
   }
 
   // --------------------------------------------
@@ -321,8 +321,8 @@ public class BasicTest {
       .filter(person -> person != personCausingNpe) //
       .filter(person -> person.getName() != null) //
       .map(person -> //
-        new Person(person.getName(), person.getCountryName(), person.getAge())) //
-      .filter(person -> person.getCountryName() != null) //
+        new Person(person.getName(), person.getCountry(), person.getAge())) //
+      .filter(person -> person.getCountry() != null) //
       .map(person -> person.getAge() + 100) //
       .forEach(age -> System.out.println(age));
 
@@ -374,10 +374,10 @@ public class BasicTest {
       .peek(person -> System.out.println("-----------------")) //
       .peek(person -> System.out.println(person)) //
       .map(person -> //
-        new Person(person.getName().toUpperCase(), person.getCountryName().toUpperCase(), //
+        new Person(person.getName().toUpperCase(), person.getCountry().toUpperCase(), //
           person.getAge())) //
       .peek(
-        person -> System.out.println((person.getName() + " from " + person.getCountryName()))) //
+        person -> System.out.println((person.getName() + " from " + person.getCountry()))) //
       .map(person -> person.getAge()) //
       .forEach(age -> System.out.println(age));
 
@@ -401,7 +401,7 @@ public class BasicTest {
     System.out.println("2");
 
     peopleStream = peopleStream.map(person -> //
-      new Person(person.getName().toUpperCase(), person.getCountryName().toUpperCase(), //
+      new Person(person.getName().toUpperCase(), person.getCountry().toUpperCase(), //
         person.getAge())) //
       .peek(person -> System.out.println("3"));
 
@@ -431,7 +431,7 @@ public class BasicTest {
     List<Person> germans = new ArrayList<>();
     List<Person> germansOverForty = new ArrayList<>();
     Stream<Person> germansStream = people.stream() //
-      .filter(person -> person.getCountryName().equals("Germany")); //
+      .filter(person -> person.getCountry().equals("Germany")); //
 
     //when
     germans = germansStream //

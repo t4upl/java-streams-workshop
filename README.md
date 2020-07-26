@@ -16,14 +16,21 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 BasicTest:
 * forEach()
 * collectors(toList(), toSet(), toMap())
-* streams on map data structure
+* streams with map data structure
 * filter()
 * map()
 * flatMap()
-* debug & code style
+* debug and code style
 * vertical processing
 * lazy
 * operation on closed streams
+
+AdvancedOne:
+* streams with arrays
+* joining(), groupingBy(), partitionBy()
+* skip(), limit(), distinct()
+* allMatch(), noneMatch(), anyMatch(), findFirst()
+* sorted()
 
 
 TODO
