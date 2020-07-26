@@ -25,12 +25,22 @@ BasicTest:
 * lazy
 * operation on closed streams
 
-AdvancedOne:
+AdvancedOneTest:
 * streams with arrays
 * joining, groupingBy, partitioningBy
 * skip, limit, distinct
 * allMatch, noneMatch, anyMatch, findFirst
 * sorted
+
+AdvancedTwoTest:
+* IntStream
+* count, sum
+* reduce
+* custom collector
+* parallel
+
+OptionalTest:
+* TODO
 
 
 TODO
