@@ -65,7 +65,11 @@ You must:
 - Include link and information about author of this repository whenever you are using or building on contents of this repository
 
 In case of questions feel free to contact me:
-https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/
+* [Linkedin](https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/)
+* [Twitter](https://twitter.com/T4Upl)
+
+
+
 
 I retain right to change licence of this repository at any time in any way.
 

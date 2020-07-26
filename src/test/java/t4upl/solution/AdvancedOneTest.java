@@ -119,6 +119,26 @@ public class AdvancedOneTest {
       .assertEquals(Collections.singletonList(vladimir), firstLetterOfNameToPeople.get('V'));
   }
 
+  @Test
+  public void groupingBy_getCountOfPeopleByCountry() {
+    //given
+    Person hans = new Person("Hans", "Germany", 28);
+    Person heinrich = new Person("Heinrich", "Germany", 43);
+    Person ivan = new Person("Ivan", "Russia", 65);
+    List<Person> people = Arrays.asList(hans, heinrich, ivan);
+
+    Map<String, Long> countryToPeopleCount = new HashMap<>();
+
+    //when
+    countryToPeopleCount = people.stream() //
+      .collect(Collectors.groupingBy(person -> person.getCountry(), Collectors.counting()));
+
+    //then
+    Assertions.assertEquals(2, countryToPeopleCount.size());
+    Assertions.assertEquals(2, countryToPeopleCount.get("Germany"));
+    Assertions.assertEquals(1, countryToPeopleCount.get("Russia"));
+  }
+
 
   @Test
   public void partitioningBy_partitionPeopleByBeingGerman() {

@@ -1,9 +1,8 @@
-package t4upl.solution;
+package t4upl.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -31,9 +30,6 @@ public class AdvancedTwoTest {
     List<Integer> zeroToFour = new ArrayList<>();
 
     //when
-    zeroToFour = IntStream.range(0, 5) //
-      .boxed() //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(0, 1, 2, 3, 4), zeroToFour);
@@ -50,10 +46,6 @@ public class AdvancedTwoTest {
     List<Person> everySecondPerson = new ArrayList<>();
 
     //when
-    everySecondPerson = IntStream.range(0, people.size()) //
-      .filter(index -> index % 2 == 1) //
-      .mapToObj(index -> people.get(index)) //
-      .collect(Collectors.toList());
 
     //then
     Assertions.assertEquals(Arrays.asList(heinrich, vladimir), everySecondPerson);
@@ -71,9 +63,6 @@ public class AdvancedTwoTest {
     List<Person> people = new ArrayList<>();
 
     //when
-    people = IntStream.range(0, names.size()) //
-      .mapToObj(index -> getPerson(names.get(index), countries.get(index), ages.get(index))) //
-      .collect(Collectors.toList());
 
     //then
     Person hans = new Person("Hans", "Germany", 28);
@@ -104,9 +93,6 @@ public class AdvancedTwoTest {
     long germanCount = -1;
 
     //when
-    germanCount = people.stream() //
-      .filter(person -> person.getCountry().equals("Germany"))
-      .count();
 
     //then
     Assertions.assertEquals(2, germanCount);
@@ -127,9 +113,6 @@ public class AdvancedTwoTest {
     int ageSum = -1;
 
     //when
-    ageSum = people.stream() //
-      .mapToInt(person -> person.getAge()) //
-      .sum();
 
     //then
     Assertions.assertEquals(163, ageSum);
@@ -154,9 +137,6 @@ public class AdvancedTwoTest {
     int ageSum = -1;
 
     //when
-    ageSum = people.stream() //
-      .mapToInt(person -> person.getAge()) //
-      .reduce(0, (previousValue, newValue) -> previousValue + newValue);
 
     //then
     Assertions.assertEquals(163, ageSum);
@@ -193,29 +173,27 @@ public class AdvancedTwoTest {
 
     @Override
     public Supplier<PeopleListWrapper> supplier() {
-      return () -> new PeopleListWrapper();
+      return null;
     }
 
     @Override
     public BiConsumer<PeopleListWrapper, Person> accumulator() {
-      return (PeopleListWrapper countryList, Person person) -> countryList.add(person);
+      return null;
     }
 
     @Override
     public BinaryOperator<PeopleListWrapper> combiner() {
-      return (c1, c2) -> {
-        throw new RuntimeException("Parallel processing not implemented");
-      };
+      return null;
     }
 
     @Override
     public Function<PeopleListWrapper, String> finisher() {
-      return peopleListWrapper -> peopleListWrapper.getCountry();
+      return null;
     }
 
     @Override
     public Set<Characteristics> characteristics() {
-      return new HashSet<>();
+      return null;
     }
   }
 
@@ -259,7 +237,7 @@ public class AdvancedTwoTest {
 
     //then
     //set to true if you see different thread names in console
-    Assertions.assertTrue(true);
+    Assertions.assertTrue(false);
   }
 
   //endregion
