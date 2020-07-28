@@ -3,7 +3,7 @@ Materials for Java 8 streams API workshop
 
 ## Table of content
 * [Introduction](#Introduction)
-* [Topics in test classes](#Topics-in-test-classes-\(45-tests-in-total\))
+* [Topics in test classes](#Topics-in-test-classes-45-tests-in-total)
 * [Repository structure](#Repository-structure)
 * [Licence](#Licence)
 * [Very important note](#Very-important-note)
