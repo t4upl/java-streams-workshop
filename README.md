@@ -40,7 +40,9 @@ AdvancedTwoTest:
 * parallel
 
 OptionalTest:
-* TODO
+* filter
+* map
+* flatMap
 
 
 TODO

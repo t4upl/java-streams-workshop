@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import t4upl.model.Continent;
-import t4upl.model.Nation;
-import t4upl.model.Person;
+import t4upl.model.stream.Continent;
+import t4upl.model.stream.Nation;
+import t4upl.model.stream.Person;
 
 public class BasicTest {
 

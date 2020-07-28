@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import t4upl.model.Person;
+import t4upl.model.stream.Person;
 
 public class AdvancedTwoTest {
 

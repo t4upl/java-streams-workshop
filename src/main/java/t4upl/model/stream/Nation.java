@@ -1,4 +1,4 @@
-package t4upl.model;
+package t4upl.model.stream;
 
 import java.util.List;
 
