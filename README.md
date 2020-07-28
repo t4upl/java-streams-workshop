@@ -8,7 +8,6 @@ Materials for Java 8 streams API workshop
 * [Licence](#Licence)
 * [Very important note](#Very-important-note)
 
-
 ## Introduction
 
 This repository contains materials for Java Streams API workshops. This repository can be used either as private study or to organize workshops. In case you decide to use content of this repository to organize the workshops the following information are true. The aim of the workshop is to introduce Java developers to Java Streams API from Java 8. Materials contain:
@@ -139,9 +138,9 @@ In case of questions feel free to contact me:
 * [Linkedin](https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/)
 * [Twitter](https://twitter.com/T4Upl)
 
-I retain right to change licence of this repository at any time in any way.
+All rights belong to Patryk Drabiński. I retain right to change licence of this repository at any time in any way.
 
 ## Very important note
-<p>Stars and sharing deeply appreciated &#128578; I didn't get paid for this.</p>
+<p>Stars and sharing are deeply appreciated &#128578; I didn't get paid for this.</p>
 
 Please let me know if you find any errors.
