@@ -59,9 +59,9 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 <details><summary>OptionalTest (3 tests)</summary>
 <p>
 <ul>
-<li>filter
-<li>map
-<li>flatMap
+<li>filter</li>
+<li>map</li>
+<li>flatMap</li>
 </ul>
 </p>
 </details>

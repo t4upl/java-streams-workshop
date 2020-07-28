@@ -35,7 +35,7 @@ public class OptionalTest {
 
   private Chocolate getVanillaChocolate(BoxOfChocolates vanillaBoxOfChocolates) {
     return vanillaBoxOfChocolates.getChocolate() //
-      .filter(chocolate -> chocolate.getTasteOfChoclate().equals("vanilla")) //
+      .filter(chocolate -> chocolate.getTasteOfChocolate().equals("vanilla")) //
       .orElse(new Chocolate(""));
   }
 
@@ -61,7 +61,7 @@ public class OptionalTest {
 
   private String getChocolateTasteUpperCased(BoxOfChocolates vanillaBoxOfChocolates) {
     return vanillaBoxOfChocolates.getChocolate() //
-      .map(chocolate -> chocolate.getTasteOfChoclate().toUpperCase()) //
+      .map(chocolate -> chocolate.getTasteOfChocolate().toUpperCase()) //
       .orElse("");
   }
 
@@ -108,7 +108,7 @@ public class OptionalTest {
     return house.getCellar() //
       .flatMap(cellar -> cellar.getBoxOfChocolates()) //
       .flatMap(boxOfChocolates -> boxOfChocolates.getChocolate()) //
-      .map(chocolate -> chocolate.getTasteOfChoclate()) //
+      .map(chocolate -> chocolate.getTasteOfChocolate()) //
       .orElse("");
   }
 

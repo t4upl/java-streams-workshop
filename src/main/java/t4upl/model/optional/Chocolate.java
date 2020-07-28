@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Chocolate {
 
-  private String tasteOfChoclate;
+  private String tasteOfChocolate;
 
-  public Chocolate(String tasteOfChoclate) {
-    this.tasteOfChoclate = tasteOfChoclate;
+  public Chocolate(String tasteOfChocolate) {
+    this.tasteOfChocolate = tasteOfChocolate;
   }
 
-  public String getTasteOfChoclate() {
-    return tasteOfChoclate;
+  public String getTasteOfChocolate() {
+    return tasteOfChocolate;
   }
 
   @Override
@@ -23,12 +23,12 @@ public class Chocolate {
       return false;
     }
     Chocolate chocolate = (Chocolate) o;
-    return Objects.equals(tasteOfChoclate, chocolate.tasteOfChoclate);
+    return Objects.equals(tasteOfChocolate, chocolate.tasteOfChocolate);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(tasteOfChoclate);
+    return Objects.hash(tasteOfChocolate);
   }
 }
