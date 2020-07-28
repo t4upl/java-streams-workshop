@@ -68,7 +68,51 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 
 ## Repository structure
 
-TODO         
+<details><summary>Repository structure</summary>
+<pre>
+├───src
+    │   a.txt
+    │
+    ├───main
+    │   ├───java
+    │   │   └───t4upl
+    │   │       └───model
+    │   │           ├───optional (Classes used for optional exercises)
+    │   │           │       BoxOfChocolates.java
+    │   │           │       Cellar.java
+    │   │           │       Chocolate.java
+    │   │           │       House.java
+    │   │           │
+    │   │           └───stream (Classes used for stream exercises)
+    │   │                   Continent.java
+    │   │                   Nation.java
+    │   │                   Person.java
+    │   │
+    │   └───resources (Resources to be given to participants during workshops)
+    │           classModel.pdf (Class model of java classes)
+    │           java-8-streams-cheat-sheet.pdf (Helpful cheat sheet, not mine)
+    │           presentation.pdf (Presentation with theory introduction)
+    │        
+    │       
+    └───test
+        └───java
+            └───t4upl
+                ├───pathtolambda (Used during presentation to explain lambda)
+                │       PathToLambdaTest.java 
+                │
+                ├───practice (Exercises to be solved during workshop, initially all should fail) 
+                │       AdvancedOneTest.java
+                │       AdvancedTwoTest.java
+                │       BasicTest.java
+                │       OptionalTest.java
+                │
+                └───solution (Solutions to exercises, all should pass)
+                        AdvancedOneTest.java
+                        AdvancedTwoTest.java
+                        BasicTest.java
+                        OptionalTest.java
+</pre>
+</details>
 
 ## Licence
 
@@ -94,6 +138,4 @@ I retain right to change licence of this repository at any time in any way.
 ## Very important note
 <p>Stars and sharing deeply appreciated &#128578; I didn't get paid for this.</p>
 
-## Work in progress... ##
-
-Expected to be finished by 01.08.2020
+Please let me know if you find any errors.
