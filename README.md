@@ -13,39 +13,52 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 
 ## Contents
 
-BasicTest:
-* forEach
-* collectors(toList, toSet, toMap)
-* streams with map data structure
-* filter
-* map
-* flatMap
-* debug and code style
-* vertical processing
-* lazy
-* operation on closed streams
+### Topics in each test class (45 tests in total):
 
-AdvancedOneTest:
-* streams with arrays
-* joining, groupingBy, partitioningBy
-* skip, limit, distinct
-* allMatch, noneMatch, anyMatch, findFirst
-* sorted
+<details>
+<summary>BasicTest (18 tests)</summary>
+<ul>
+<li>forEach</li>
+<li>collectors(toList, toSet, toMap)</li>
+<li>streams with map data structure </li>
+<li>filter</li>
+<li>map</li>
+<li>flatMap</li>
+<li>debug and code style</li>
+<li>vertical processing</li>
+<li>lazy</li>
+<li>operation on closed streams</li>
+</ul>
+</details>
 
-AdvancedTwoTest:
-* IntStream
-* count, sum
-* reduce
-* custom collector
-* parallel
+<details>
+<summary>AdvancedOneTest (16 tests)</summary>
+<p>
+<li>streams with arrays</li>
+<li>joining, groupingBy, partitioningBy</li>
+<li>skip, limit, distinct</li>
+<li>allMatch, noneMatch, anyMatch, findFirst</li>
+<li>sorted</li>
+</p>
+</details>
 
-OptionalTest:
-* filter
-* map
-* flatMap
+<details><summary>AdvancedTwoTest (8 tests)</summary>
+<p>
+<li>IntStream</li>
+<li>count, sum</li>
+<li>reduce</li>
+<li>custom collector</li>
+<li>parallel</li>
+</p>
+</details>
 
-
-TODO
+<details><summary>OptionalTest (3 tests)</summary>
+<p>
+<li>filter
+<li>map
+<li>flatMap
+</p>
+</details>
 
 ## Repository structure
 
@@ -70,10 +83,10 @@ In case of questions feel free to contact me:
 * [Linkedin](https://www.linkedin.com/in/patryk-drabi%C5%84ski-1a6209a6/)
 * [Twitter](https://twitter.com/T4Upl)
 
-
-
-
 I retain right to change licence of this repository at any time in any way.
+
+## Very important note
+<p>Stars and sharing deeply appreciated &#128578; I didn't get paid for this.</p>
 
 ## Work in progress... ##
 
