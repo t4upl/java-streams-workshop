@@ -1,6 +1,14 @@
 # java-streams-workshop
 Materials for Java 8 streams API workshop
 
+## Table of content
+* [Introduction](#Introduction)
+* [Topics in test classes](#Topics-in-test-classes-(45-tests-in-total))
+* [Repository structure](#Repository-structure)
+* [Licence](#Licence)
+* [Very important note](#Very-important-note)
+
+
 ## Introduction
 
 This repository contains materials for Java Streams API workshops. This repository can be used either as private study or to organize workshops. In case you decide to use content of this repository to organize the workshops the following information are true. The aim of the workshop is to introduce Java developers to Java Streams API from Java 8. Materials contain:
@@ -11,9 +19,7 @@ This repository contains materials for Java Streams API workshops. This reposito
  
 Workshops can be organized either with normal or extended scope. Normal scope involves presentation + solving BasicTest class and would take about 4h. Extended scope involves presentation + solving BasicTest, AdvancedOneTest, AdvancedTwoTest classes and can take up to 7h. Normal scope should be enough for newcomers to Java Streams to tackle day-to-day problems. Extended scope involves topics on how to make using streams clearer. It is a bunch of nice-to-knows. While not critical for delivery using features from extended scope can improve code quality. Workshops should be limited to 8 people, excluding speaker.
 
-## Contents
-
-### Topics in each test class (45 tests in total):
+### Topics in test classes (45 tests in total)
 
 <details>
 <summary>BasicTest (18 tests)</summary>
@@ -71,7 +77,7 @@ Workshops can be organized either with normal or extended scope. Normal scope in
 <details><summary>Repository structure</summary>
 <pre>
 ├───src
-    │   a.txt
+    │
     │
     ├───main
     │   ├───java
@@ -89,7 +95,7 @@ Workshops can be organized either with normal or extended scope. Normal scope in
     │   │                   Person.java
     │   │
     │   └───resources (Resources to be given to participants during workshops)
-    │           classModel.pdf (Class model of java classes)
+    │           classModel.pdf (Model of java classes)
     │           java-8-streams-cheat-sheet.pdf (Helpful cheat sheet, not mine)
     │           presentation.pdf (Presentation with theory introduction)
     │        
